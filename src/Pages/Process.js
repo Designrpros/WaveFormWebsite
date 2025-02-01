@@ -32,10 +32,15 @@ const Title = styled.h1`
 `;
 
 const Punchline = styled.h2`
-  font-size: calc(1rem + 1vw);
+  font-size: calc(1rem + 1.2vw);
+  font-weight: lighter;
+  color: #ddd;
+  max-width: 800px;
+  margin-bottom: 20px;
   text-align: center;
-  color: #fff;
-  margin-top: 10px;
+
+    @media (max-width: 768px) {
+    font-size: calc(1rem + 1.5vw);
 `;
 
 const ScrollArrow = styled.div`

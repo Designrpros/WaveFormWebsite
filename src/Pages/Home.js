@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faPlay, faPause, faStepBackward, faStepForward } from "@fortawesome/free-solid-svg-icons";
 import RadioSlider from "../Components/RadioSlider";
 import radioStations from "../Components/radioStations";
-
+import AppStoreButton from "../Components/AppStoreButton"; // ✅ Import Download Button
 
 // Themes for dark and light mode
 const darkTheme = {
@@ -99,19 +99,11 @@ const MusicControls = styled.div`
   z-index: 2;
 `;
 
-const ScrollArrow = styled.div`
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  cursor: pointer;
-  z-index: 2;
-
-  .chevron-icon {
-    font-size: 24px;
-    color: ${({ theme }) => theme.textColor};
-    animation: bounce 2s infinite;
-  }
+const DownloadButtonWrapper = styled.div`
+  margin-top: 4rem; /* Ensures spacing between controls and button */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ServicesContainer = styled.div`
@@ -151,18 +143,18 @@ const Paragraph = styled.p`
   margin-bottom: 1rem;
 `;
 
-const ToggleButton = styled.button`
-  background: ${({ theme }) => theme.cardBackground};
-  color: ${({ theme }) => theme.textColor};
-  border: 1px solid ${({ theme }) => theme.textColor};
-  padding: 0.5rem 1rem;
-  margin: 1rem 0;
-  border-radius: 5px;
+const ScrollArrow = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   cursor: pointer;
+  z-index: 2;
 
-  &:hover {
-    background: ${({ theme }) => theme.textColor};
-    color: ${({ theme }) => theme.background};
+  .chevron-icon {
+    font-size: 24px;
+    color: ${({ theme }) => theme.textColor};
+    animation: bounce 2s infinite;
   }
 `;
 
@@ -209,28 +201,6 @@ const Home = () => {
     }
   };
 
-  // Play the previous station
-  const handlePrevious = () => {
-    const previousIndex = stationIndex === 0 ? radioStations.length - 1 : stationIndex - 1;
-    setStationIndex(previousIndex);
-    const previousStation = radioStations[previousIndex];
-    setCurrentStation(previousStation);
-    audioRef.current.src = previousStation.streamURL;
-    audioRef.current.play();
-    setIsPlaying(true);
-  };
-
-  // Play the next station
-  const handleNext = () => {
-    const nextIndex = (stationIndex + 1) % radioStations.length;
-    setStationIndex(nextIndex);
-    const nextStation = radioStations[nextIndex];
-    setCurrentStation(nextStation);
-    audioRef.current.src = nextStation.streamURL;
-    audioRef.current.play();
-    setIsPlaying(true);
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <Helmet>
@@ -249,7 +219,7 @@ const Home = () => {
           />
           <IntroContent>
             <Title>WaveForm</Title>
-            
+
             {/* Radio Station Slider */}
             <RadioSlider
               stations={radioStations}
@@ -274,21 +244,26 @@ const Home = () => {
 
             {/* Music Controls */}
             <MusicControls>
-              <FontAwesomeIcon icon={faStepBackward} size="2x" onClick={handlePrevious} />
+              <FontAwesomeIcon icon={faStepBackward} size="2x" onClick={() => {}} />
               <FontAwesomeIcon
                 icon={isPlaying ? faPause : faPlay}
                 size="2x"
                 onClick={handleGlobalPlayPause}
               />
-              <FontAwesomeIcon icon={faStepForward} size="2x" onClick={handleNext} />
+              <FontAwesomeIcon icon={faStepForward} size="2x" onClick={() => {}} />
             </MusicControls>
+
+            {/* ✅ Properly Positioned Download Button */}
+            <DownloadButtonWrapper>
+              <AppStoreButton href="https://apps.apple.com/no/app/mapr/id6450910273" />
+            </DownloadButtonWrapper>
+
           </IntroContent>
           <ScrollArrow>
             <FontAwesomeIcon icon={faChevronDown} className="chevron-icon" />
           </ScrollArrow>
         </FullScreenIntro>
 
-        {/* Services Section */}
         <ServicesContainer>
           <ServiceCard>
             <Heading>Discover New Stations</Heading>
@@ -356,6 +331,7 @@ const Home = () => {
             </ChildCard>
           </ServiceCard>
         </ServicesContainer>
+
       </PageWrapper>
 
       {/* Audio Element */}

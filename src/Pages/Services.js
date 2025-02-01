@@ -33,12 +33,14 @@ const Title = styled.h1`
 `;
 
 const Punchline = styled.h2`
-  font-size: calc(1rem + 1vw);
+  font-size: calc(1rem + 1.2vw);
+  font-weight: lighter;
+  color: #ddd;
+  max-width: 800px;
+  margin-bottom: 20px;
   text-align: center;
-  color: #fff;
-  margin-top: 10px;
 
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
     font-size: calc(1rem + 1.5vw);
   }
 `;
@@ -140,7 +142,9 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <title>About WaveForm</title>
+        <title>About</title>
+        <title>WaveForm</title>
+        <title>WaveForum</title>
         <meta name="description" content="Discover the services we offer with WaveForm." />
       </Helmet>
 
@@ -148,7 +152,7 @@ const Services = () => {
         {/* Hero Section */}
         <FullScreenIntro>
           <AnimatedLogo src={MusicCircle} alt="MusicCircle Logo" />
-          <Title>About WaveForm</Title>
+          <Title>WaveForm <br></br> & <br></br> WaveForum</Title>
           <Punchline>
             Stream Radio from around the world, with an intuitive interface and algorithm.
           </Punchline>

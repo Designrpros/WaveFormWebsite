@@ -17,14 +17,7 @@ const radioStations = [
       title: "NRK MP3",
       genre: "Top 40",
       streamURL: "https://lyd.nrk.no/nrk_radio_mp3_mp3_h"
-    },
-    {
-    id: 3,
-    title: "NRK MP3",
-    genre: "Top 40",
-    streamURL: "https://lyd.nrk.no/nrk_radio_mp3_mp3_h"
-    }
-        
+    } 
   ];
   
   export default radioStations;

@@ -10,8 +10,7 @@ import "./App.css";
 import Home from "./Pages/Home";
 import Services from "./Pages/Services";
 import Process from "./Pages/Process";
-import UserJourney from "./Pages/UserJourney.js";
-import Methods from "./Pages/Methods";
+import UserJourney from "./Pages/WaveForum.js";
 import Security from "./Pages/Security.js"; // ✅ Security Component
 import TermsOfService from "./Pages/TermsOfService.js"; // ✅ Terms Component
 import Kontakt from "./Pages/Kontakt.js";
@@ -110,14 +109,11 @@ const App = () => {
           <TabButton onClick={() => handleTabClick("home")} active={activeTab === "home"}>
             <StyledLink to="/">WaveForm</StyledLink>
           </TabButton>
+          <TabButton onClick={() => handleTabClick("userjourney")} active={activeTab === "userjourney"}>
+            <StyledLink to="/brukerreise">WaveForum</StyledLink>
+          </TabButton>
           <TabButton onClick={() => handleTabClick("services")} active={activeTab === "services"}>
             <StyledLink to="/tjenester">About</StyledLink>
-          </TabButton>
-          <TabButton onClick={() => handleTabClick("userjourney")} active={activeTab === "userjourney"}>
-            <StyledLink to="/brukerreise">Brukerreise</StyledLink>
-          </TabButton>
-          <TabButton onClick={() => handleTabClick("methods")} active={activeTab === "methods"}>
-            <StyledLink to="/metoder">Metoder</StyledLink>
           </TabButton>
           <TabButton onClick={() => handleTabClick("process")} active={activeTab === "process"}>
             <StyledLink to="/prosess">Privacy Policy</StyledLink>
@@ -138,7 +134,6 @@ const App = () => {
         <Route path="/tjenester" element={<Services />} />
         <Route path="/prosess" element={<Process />} />
         <Route path="/brukerreise" element={<UserJourney />} />
-        <Route path="/metoder" element={<Methods />} />
         <Route path="/security" element={<Security />} /> {/* ✅ FIXED Security Route */}
         <Route path="/terms" element={<TermsOfService />} /> {/* ✅ FIXED Terms Route */}
         <Route path="/kontakt" element={<Kontakt />} />
